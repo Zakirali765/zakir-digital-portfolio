@@ -1,0 +1,1 @@
+import"./navigation.CEMq8xja.js";document.querySelector(`#example-enquiry`)?.addEventListener(`click`,()=>{let e=document.querySelector(`#demo-service`)?.value,t=document.querySelector(`#example-output`);t&&(t.textContent=`Example ${e?.toLowerCase()} enquiry: “I would like to discuss this service and understand the next steps.” Demonstration only — nothing was sent.`)});

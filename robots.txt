@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /zakir-digital-portfolio/
+Disallow: /zakir-digital-portfolio/demos/
+Sitemap: https://zakirali765.github.io/zakir-digital-portfolio/sitemap.xml
