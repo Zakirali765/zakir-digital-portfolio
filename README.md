@@ -1,6 +1,12 @@
 # ZAKIR DIGITAL portfolio
 
-Complete local-only Astro/TypeScript portfolio. Created at `C:\Users\Admin\Desktop\zakir-digital-portfolio`. No deployment or external submission was performed.
+Astro/TypeScript portfolio for ZAKIR DIGITAL.
+
+Public repository: https://github.com/Zakirali765/zakir-digital-portfolio
+
+GitHub Pages: https://zakirali765.github.io/zakir-digital-portfolio/
+
+Source lives on `main`; the compiled website is published from `gh-pages`. Website publication does not connect the enquiry form to a submission service.
 
 The current revision uses the owner's UK-focused copy: UK local businesses, three clearly labelled fictional demonstrations, separate redesign/new-website/optional-assistant offers, scoped pricing and an eight-step process. The bracketed sample suggestions were replaced with accurate descriptions of the implemented plumbing, electrical and garage demos. No clinic demo or client relationship is claimed.
 
@@ -63,7 +69,20 @@ All runtime images/fonts are local. Supplied portrait and logo are optimized; ph
 
 The social card is a genuine screenshot of the implemented homepage. No generated interface screenshots or fake evidence are used.
 
-## Publication preparation (owner action, not performed)
+## GitHub Pages publishing
+
+`npm run build:pages` creates a separate build in `work/github-pages-dist`, using the verified GitHub Pages origin and `/zakir-digital-portfolio/` base path. It leaves the root-path local preview build in `dist` alone.
+
+To publish a change after reviewing and committing the source:
+
+```powershell
+git push origin main
+npm run deploy:pages
+```
+
+The publishing script requires GitHub authentication and the exact portfolio remote. It builds and pushes the compiled website to `gh-pages` without a force push. GitHub Pages must use that branch and its root directory as the publishing source. Pushing source to `main` alone does not deploy a new build. No paid service or custom domain is required.
+
+## Other hosting configuration
 
 The deployment origin is intentionally unset. The local build has no canonical URL, uses noindex/nofollow and disallows crawlers. Its sitemap is an empty valid urlset. Once the owner chooses a genuine target, set SITE_URL to its actual origin. BASE_PATH defaults to `/`; use a trailing slash for a subpath. In PowerShell:
 
@@ -81,4 +100,4 @@ No connected Botpress embed was installed. The optional assistant is clearly lab
 
 ## Verification
 
-See `docs/QA.md` for actual command results, measurement conditions, screenshot review, repair notes and limits. `docs/BUILD-CHECKLIST.md` records completion. Production code is complete; choosing the publication address/host remains an owner decision.
+See `docs/QA.md` for actual command results, measurement conditions, screenshot review, repair notes and limits. `docs/BUILD-CHECKLIST.md` records completion. The initial QA record describes the local build; GitHub Pages publication checks are recorded separately at the top of the report.
