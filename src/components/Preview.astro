@@ -1,0 +1,36 @@
+---
+import { existsSync } from 'node:fs';
+import { path } from '../data/site';
+interface Props {
+  slug: string;
+  name: string;
+  eager?: boolean;
+  sizes?: string;
+}
+const { slug, name, eager = false, sizes = '(max-width:650px) 90vw, 85vw' } = Astro.props;
+const captured = existsSync(`public/images/${slug}-desktop.webp`);
+---
+
+<div class="project-preview">
+  {captured ? (
+    <img
+      src={path(`images/${slug}-desktop.webp`)}
+      srcset={`${path(`images/${slug}-desktop-720.webp`)} 720w, ${path(`images/${slug}-desktop-1080.webp`)} 1080w, ${path(`images/${slug}-desktop.webp`)} 1440w`}
+      sizes={sizes}
+      width="1440"
+      height="1000"
+      alt={`${name} concept website: implemented desktop design`}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : 'auto'}
+    />
+  ) : (
+    <div class="live-viewport" aria-hidden="true">
+      <iframe
+        src={path(`demos/${slug}/`)}
+        title={`${name} live visual preview`}
+        tabindex="-1"
+        loading={eager ? 'eager' : 'lazy'}
+      ></iframe>
+    </div>
+  )}
+</div>

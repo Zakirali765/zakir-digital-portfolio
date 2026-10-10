@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, path } from '../data/site';
+---
+
+<Layout
+  title="Privacy | ZAKIR DIGITAL"
+  description="How this ZAKIR DIGITAL portfolio handles its local project-brief tools and external contact links."
+>
+  <article class="legal-page wrap">
+    <a class="text-link" href={path()}>
+      Back to the portfolio
+    </a>
+    <h1>Privacy, in plain language.</h1>
+    <p>
+      This page describes how this portfolio is implemented. It is not a legal certification.
+      Updated 9 October 2026.
+    </p>
+    <h2>What this website does</h2>
+    <p>
+      This is a static portfolio with no accounts, database, analytics, advertising trackers or
+      embedded external chatbot. Fonts and images are served locally. The support assistant example
+      uses prewritten answers and has no free-text field.
+    </p>
+    <h2>Your project brief</h2>
+    <p>
+      The enquiry composer processes your name, business name, email, town or service area, website
+      URL, service interest and message in your browser. The site does not submit this form to a
+      server, store it in localStorage or send it to ZAKIR DIGITAL automatically. Please avoid
+      sensitive information.
+    </p>
+    <p>
+      You can copy the brief to your device’s clipboard or download it as a text file. These actions
+      happen only when you choose them. Your browser may restore form values according to its own
+      settings.
+    </p>
+    <h2>Email and WhatsApp drafts</h2>
+    <p>
+      Zakir will use the details you choose to send only to reply to your enquiry. This page has no
+      direct “Send enquiry” integration.
+    </p>
+    <p>
+      “Open email draft” passes your brief to your chosen email application using a mailto link.
+      “Open WhatsApp draft” opens WhatsApp with the brief included in the destination URL. That step
+      shares the message content with the application you open. Opening a draft does not send a
+      message; you review and send it yourself.
+    </p>
+    <p>
+      WhatsApp and your email provider have their own privacy practices. Direct contact links also
+      open external services. Information you choose to send there is handled by those providers and
+      received by Zakir through the chosen channel.
+    </p>
+    <h2>Fictional project demos</h2>
+    <p>
+      The three sample websites are concepts for fictional businesses. Their enquiry examples show
+      local messages only. They do not collect personal details, submit forms or take bookings.
+    </p>
+    <h2>Hosting</h2>
+    <p>
+      This version is a local preview. If it is published later, the selected hosting provider may
+      process ordinary request data such as IP addresses and access logs. The owner should review
+      this page against the chosen hosting configuration before publication.
+    </p>
+    <h2>Questions</h2>
+    <p>
+      For questions about this portfolio, email <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+  </article>
+</Layout>

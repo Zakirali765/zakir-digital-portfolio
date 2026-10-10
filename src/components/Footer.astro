@@ -1,0 +1,33 @@
+---
+import { site, path } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-top">
+    <a class="footer-wordmark" href={path()}>
+      ZAKIR DIGITAL<span>.</span>
+    </a>
+    <p>
+      Founder: Zakir Ali
+      <br />
+      Based in Pakistan, serving UK clients remotely.
+    </p>
+  </div>
+  <div class="wrap footer-details">
+    <a href={`mailto:${site.email}`}>{site.email}</a>
+    <p>Website redesign · New websites · Optional information-only website assistants</p>
+    <p>
+      Demonstration projects on this page are labelled as demonstrations and are not presented as
+      paying clients.
+    </p>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© {new Date().getFullYear()} ZAKIR DIGITAL</span>
+    <nav aria-label="Footer navigation">
+      <a href={`${path()}#work`}>Sample work</a>
+      <a href={`${path()}#contact`}>Contact</a>
+      <a href={path('privacy/')}>Privacy</a>
+    </nav>
+    <span>Clear websites. Human conversations.</span>
+  </div>
+</footer>

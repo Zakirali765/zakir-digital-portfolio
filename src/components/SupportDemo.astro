@@ -1,0 +1,50 @@
+---
+import { questions } from '../data/site';
+---
+
+<div class="assistant-demo">
+  <div>
+    <span class="demo-label">Interactive demo</span>
+    <h3>Support assistant example</h3>
+    <p>
+      A useful answer, without another form. Choose a question to try this information-only example.
+    </p>
+    <p>Prewritten answers. No connected AI, free-text input or personal-data collection.</p>
+  </div>
+  <div>
+    <div class="question-list" role="group" aria-label="Example service questions">
+      {questions.map((q, i) => (
+        <button type="button" data-question={i} data-answer={q.answer} aria-pressed="false">
+          {q.question}
+        </button>
+      ))}
+    </div>
+    <div class="assistant-answer" role="status" aria-live="polite">
+      Hello. Choose a service question and I’ll show you the answer.
+    </div>
+    <button type="button" class="reset-demo">
+      Reset example
+    </button>
+    <noscript>
+      <p>
+        Typical website delivery is 4–7 days after content, access and upfront payment are received.
+        Two revision rounds are included within the agreed scope. AI support is optional.
+      </p>
+    </noscript>
+  </div>
+</div>
+<script>
+  const answer = document.querySelector<HTMLElement>('.assistant-answer');
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-question]');
+  buttons.forEach((button) =>
+    button.addEventListener('click', () => {
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+      if (answer) answer.textContent = button.dataset.answer || '';
+    }),
+  );
+  document.querySelector('.reset-demo')?.addEventListener('click', () => {
+    buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
+    if (answer)
+      answer.textContent = 'Hello. Choose a service question and I’ll show you the answer.';
+  });
+</script>

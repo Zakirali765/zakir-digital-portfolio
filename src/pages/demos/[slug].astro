@@ -1,0 +1,290 @@
+---
+import { projects } from '../../data/projects';
+import { path } from '../../data/site';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/dm-sans';
+import '../../styles/global.css';
+import '../../styles/demos.css';
+export function getStaticPaths() {
+  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+const { project } = Astro.props;
+const isHeat = project.slug === 'hearth-and-pipe';
+const isElectric = project.slug === 'current-electrical';
+const alt = isHeat
+  ? 'Illustrative cast-iron radiator beneath a window'
+  : isElectric
+    ? 'Illustrative electrical work using pliers at wall outlets'
+    : 'Illustrative vehicle engine maintenance';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content={`${project.name}: an original fictional ${project.sector.toLowerCase()} website concept by ZAKIR DIGITAL. All enquiries are demonstrations.`}
+    />
+    <title>{project.name} — Fictional website concept</title>
+    <link rel="icon" href={path('favicon.svg')} type="image/svg+xml" />
+  </head>
+  <body class:list={['demo-site', project.slug]}>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <div class="concept-banner">
+      <span>Demonstration project — not a paying client.</span>
+      <a href={path(`work/${project.slug}/`)}>View the case study</a>
+    </div>
+    <header class="demo-header wrap">
+      <a class="demo-wordmark" href={path(`demos/${project.slug}/`)}>
+        {isHeat ? 'hearth & pipe' : isElectric ? 'current' : 'SHIFT'}
+        <span>{isHeat ? 'PLUMBING & HEATING' : isElectric ? 'ELECTRICAL' : 'MOTORWORKS'}</span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        hidden
+      >
+        Menu ＋
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Demo navigation">
+        <a href="#services">Services</a>
+        <a href="#approach">Our approach</a>
+        <a href="#questions">Questions</a>
+      </nav>
+      <a class="button demo-header-cta" href="#enquiry">
+        Explore an enquiry
+      </a>
+    </header>
+    <main id="main">
+      <section class="demo-hero wrap">
+        <div class="demo-hero-copy">
+          <div class="eyebrow">
+            {isHeat
+              ? 'A little comfort goes a long way'
+              : isElectric
+                ? 'Thoughtful electrical work'
+                : 'Vehicle care, made clear'}
+          </div>
+          <h1>{project.tag}</h1>
+          <p>
+            {isHeat
+              ? 'Plumbing and heating information that helps you feel at home. Find the right service and understand your next step.'
+              : isElectric
+                ? 'Lighting, installations and considered upgrades for the places you live and work.'
+                : 'Straightforward servicing, diagnostics and repair information. Understand the work before taking the next step.'}
+          </p>
+          <a class="button" href="#services">
+            Find your service
+          </a>
+          <span class="demo-hero-note">
+            {isHeat
+              ? 'For everyday needs. And the bigger plans.'
+              : isElectric
+                ? 'For homes and small business spaces.'
+                : 'From routine care to the unexpected.'}
+          </span>
+        </div>
+        <div class="demo-image">
+          <img
+            src={path(`images/${project.image}`)}
+            alt={alt}
+            width="1200"
+            height="1100"
+            fetchpriority="high"
+          />
+          <span class="photo-note">Illustrative stock photography</span>
+          {isHeat && (
+            <div class="demo-image-label">
+              Comfort starts
+              <br />
+              with clarity.
+            </div>
+          )}
+        </div>
+      </section>
+      <div class="demo-service-strip wrap">
+        <span>
+          {isHeat
+            ? 'A clear way forward'
+            : isElectric
+              ? 'A more considered connection'
+              : 'Know what comes next'}
+        </span>
+        {project.services.map((service) => (
+          <a href="#services">{service.name}</a>
+        ))}
+      </div>
+      <section class="demo-services wrap" id="services">
+        <div class="demo-section-head">
+          <div>
+            <span class="eyebrow">01 / Services</span>
+            <h2>
+              {isHeat
+                ? 'Good help starts here.'
+                : isElectric
+                  ? 'Make room for better.'
+                  : 'Keep life moving.'}
+            </h2>
+          </div>
+          <p>
+            {isHeat
+              ? 'Three clear starting points for the work you have in mind.'
+              : isElectric
+                ? 'Understand your options, then tell us about your space.'
+                : 'Useful information for whatever brings you here.'}
+          </p>
+        </div>
+        <div class="demo-service-grid">
+          {project.services.map((service, index) => (
+            <article>
+              <span class="demo-service-index">0{index + 1}</span>
+              <h3>{service.name}</h3>
+              <p>{service.text}</p>
+              <a class="text-link" href="#enquiry">
+                Explore this enquiry
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section class="demo-approach" id="approach">
+        <div class="wrap demo-approach-grid">
+          <div>
+            <span class="eyebrow">02 / Our approach</span>
+            <h2>
+              {isHeat
+                ? 'Plain language. Practical next steps.'
+                : isElectric
+                  ? 'The detail makes the difference.'
+                  : 'A clearer view of the road ahead.'}
+            </h2>
+          </div>
+          <div>
+            <p>
+              {isHeat
+                ? 'A service website should help you understand the work, without needing to know every technical term.'
+                : isElectric
+                  ? 'Start with how you use your space. Explain the changes you have in mind and the information you already have.'
+                  : 'Start with what you have noticed. A useful description of your vehicle and its symptoms can help frame a repair enquiry.'}
+            </p>
+            <ol>
+              <li>
+                <strong>Understand the service</strong>
+                <span>Explore the relevant information before preparing an enquiry.</span>
+              </li>
+              <li>
+                <strong>Describe the work</strong>
+                <span>Outline your needs and any helpful context.</span>
+              </li>
+              <li>
+                <strong>Agree the next step</strong>
+                <span>A real business would confirm scope and availability directly.</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+      <section class="demo-questions wrap" id="questions">
+        <div class="demo-section-head">
+          <div>
+            <span class="eyebrow">03 / Useful questions</span>
+            <h2>A little more clarity.</h2>
+          </div>
+          <p>This is a design concept. Business details would be verified before a real launch.</p>
+        </div>
+        <div class="demo-faq">
+          <details>
+            <summary>What should an enquiry include?</summary>
+            <p>
+              {isHeat
+                ? 'Explain the heating or plumbing work you are exploring and any relevant existing information. A real service provider would tell you what else they need.'
+                : isElectric
+                  ? 'Describe the space, the lighting or installation changes you want, and any relevant plans. A real service provider would confirm the next step.'
+                  : 'Describe the vehicle, the symptoms you have noticed and the type of service you are exploring. A real garage would confirm what information is needed.'}
+            </p>
+          </details>
+          <details>
+            <summary>Can I book a service here?</summary>
+            <p>
+              No. This is a fictional website demonstration. It does not take bookings or transmit
+              enquiries.
+            </p>
+          </details>
+          <details>
+            <summary>Where are prices and business details?</summary>
+            <p>
+              No real prices, locations, opening hours, credentials or availability are claimed.
+              Those details would need verification for a real business.
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="demo-enquiry" id="enquiry">
+        <div class="wrap demo-enquiry-grid">
+          <div>
+            <span class="eyebrow">04 / Enquiry example</span>
+            <h2>
+              {isHeat
+                ? 'What does your home need?'
+                : isElectric
+                  ? 'Tell the story of your space.'
+                  : 'Start with what you know.'}
+            </h2>
+            <p>
+              Demonstration only. No message is sent, no booking is made and no visitor data is
+              collected.
+            </p>
+          </div>
+          <div class="demo-enquiry-control">
+            <label for="demo-service">Explore a service enquiry</label>
+            <select id="demo-service">
+              {project.services.map((s) => (
+                <option>{s.name}</option>
+              ))}
+            </select>
+            <button id="example-enquiry" class="button" type="button">
+              Show enquiry example
+            </button>
+            <p id="example-output" role="status" aria-live="polite">
+              Choose a service to see a local demonstration.
+            </p>
+            <noscript>
+              <p>
+                A real enquiry would describe the service needed and relevant project details. This
+                demonstration cannot send an enquiry.
+              </p>
+            </noscript>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="demo-footer wrap">
+      <div class="demo-wordmark">{project.name}</div>
+      <p>
+        Demonstration project — fictional business. Not a paying client.
+        <br />
+        Designed and implemented by ZAKIR DIGITAL.
+      </p>
+      <a class="text-link" href={path(`work/${project.slug}/`)}>
+        Return to case study
+      </a>
+    </footer>
+    <script>
+      import '../../scripts/navigation';
+      const button = document.querySelector<HTMLButtonElement>('#example-enquiry');
+      button?.addEventListener('click', () => {
+        const choice = document.querySelector<HTMLSelectElement>('#demo-service')?.value;
+        const output = document.querySelector<HTMLElement>('#example-output');
+        if (output)
+          output.textContent = `Example ${choice?.toLowerCase()} enquiry: “I would like to discuss this service and understand the next steps.” Demonstration only — nothing was sent.`;
+      });
+    </script>
+  </body>
+</html>

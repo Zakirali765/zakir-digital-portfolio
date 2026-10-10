@@ -1,0 +1,384 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Preview from '../components/Preview.astro';
+import SupportDemo from '../components/SupportDemo.astro';
+import BriefComposer from '../components/BriefComposer.astro';
+import { projects } from '../data/projects';
+import { site, path, faqs, sectors, services, projectInclusions, processSteps } from '../data/site';
+---
+
+<Layout>
+  <section class="hero uk-focus wrap" aria-labelledby="hero-title">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="small-line"></span>Independent web design · UK local businesses
+        </div>
+        <h1 id="hero-title">
+          Professional websites for <em>UK local businesses</em>
+        </h1>
+        <p>
+          I’m Zakir Ali, founder of ZAKIR DIGITAL. I redesign and build clear, mobile-friendly
+          websites for local businesses such as plumbers, electricians, roofers, garages and clinics
+          — working remotely from Pakistan.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#contact">
+            {site.primaryAction}
+          </a>
+          <a class="text-link" href="#work">
+            See sample work
+          </a>
+        </div>
+        <p class="hero-honesty">
+          New and demonstration work is labelled clearly. No fake clients, no guaranteed leads, no
+          pressure.
+        </p>
+      </div>
+      <div class="hero-preview">
+        <div class="preview-topline">
+          <span>A clearer kind of service website</span>
+          <span>01 / 03</span>
+        </div>
+        <figure>
+          <a
+            href={path('work/hearth-and-pipe/')}
+            aria-label="hearth & pipe / demonstration preview — view case study"
+          >
+            <div class="preview-stage">
+              <div class="browser-bar" aria-hidden="true">
+                <i></i>
+                <i></i>
+                <i></i>
+                <span>hearth & pipe / demonstration preview</span>
+              </div>
+              <Preview
+                slug="hearth-and-pipe"
+                name="Hearth & Pipe"
+                sizes="(max-width:650px) 90vw, 40vw"
+                eager
+              />
+            </div>
+          </a>
+          <figcaption>
+            <span>Hearth & Pipe</span>
+            <span>Fictional demonstration · Plumbing & heating</span>
+          </figcaption>
+        </figure>
+        <div class="preview-seal" aria-hidden="true">
+          Real layouts.
+          <br />
+          Clearly labelled demos.
+        </div>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <span>A short outline before work begins.</span>
+      <span>Based in Pakistan · Serving UK businesses remotely</span>
+    </div>
+  </section>
+  <section class="section paper who-section" id="who-this-helps">
+    <div class="wrap who-grid">
+      <div>
+        <div class="section-index">01 / Who this helps</div>
+        <h2>
+          Clear services.
+          <br />
+          Easy to get in touch.
+        </h2>
+        <p>
+          If your current website is hard to use on a phone, buries your services, or makes your
+          phone number and email difficult to find, a clearer website can help visitors understand
+          what you do and how to contact you.
+        </p>
+      </div>
+      <div>
+        <h3>Sectors I focus on</h3>
+        <ul class="sector-list">
+          {sectors.map((sector) => (
+            <li>{sector}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-index">02 / Services</div>
+      <div class="services-top">
+        <h2>
+          A clearer website.
+          <br />A practical next step.
+        </h2>
+        <p>
+          Website redesign, new website creation, and optional information-only support. Built
+          around accurate details about your business.
+        </p>
+      </div>
+      {services.map((service, index) => (
+        <article class="service-row">
+          <span class="service-number">
+            0{index + 1}
+            {index === 2 && ' / Optional'}
+          </span>
+          <h3>{service.title}</h3>
+          <div class="service-description">
+            <p>{service.copy}</p>
+            {index === 2 && (
+              <p>
+                It does not collect personal data, generate leads, provide quotations, or make
+                bookings. Chatbot and recurring platform costs are priced separately.
+              </p>
+            )}
+            <ul>
+              {service.features.map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+      <p class="service-boundary">
+        Not offered: CRM systems, workflow automation, automated lead generation, guaranteed
+        rankings, or guaranteed enquiries.
+      </p>
+      <SupportDemo />
+    </div>
+  </section>
+  <section class="section paper" id="work">
+    <div class="wrap">
+      <div class="section-heading">
+        <div>
+          <div class="section-index">03 / Sample work</div>
+          <h2>
+            See the work.
+            <br />
+            Understand the choices.
+          </h2>
+        </div>
+        <p>
+          The projects below are demonstration projects created to show design quality and layout.
+          They are not paying clients.
+        </p>
+      </div>
+      <div class="work-grid">
+        {projects.map((project, index) => (
+          <article class="project-card">
+            <a
+              class="project-art"
+              href={path(`work/${project.slug}/`)}
+              aria-label={`${project.name} / demonstration — view case study`}
+            >
+              <div class="browser-bar" aria-hidden="true">
+                <i></i>
+                <i></i>
+                <i></i>
+                <span>{project.name} / demonstration</span>
+              </div>
+              <Preview
+                slug={project.slug}
+                name={project.name}
+                sizes={
+                  index === 0 ? '(max-width:650px) 90vw, 85vw' : '(max-width:650px) 90vw, 40vw'
+                }
+              />
+            </a>
+            <div class="project-caption">
+              <div>
+                <h3>
+                  <a href={path(`work/${project.slug}/`)}>{project.name}</a>
+                </h3>
+                <div class="sector">
+                  0{index + 1} / {project.sector} · Fictional business
+                </div>
+                <div class="status">{project.status}</div>
+              </div>
+              <a class="text-link" href={path(`work/${project.slug}/`)}>
+                View case study
+              </a>
+            </div>
+            <p class="project-summary">{project.summary}</p>
+            <a class="text-link project-demo-link" href={path(`demos/${project.slug}/`)}>
+              Open live demonstration
+            </a>
+          </article>
+        ))}
+      </div>
+      <p class="work-note">
+        Each sample is an original, fully implemented website for a fictional business. The
+        screenshots come from these working demos; enquiry actions are demonstrations only.
+      </p>
+    </div>
+  </section>
+  <section class="section investment" id="investment">
+    <div class="wrap investment-grid">
+      <div class="price-card">
+        <div class="eyebrow">04 / Pricing</div>
+        <h2>
+          Clear scope.
+          <br />
+          Clear pricing.
+        </h2>
+        <div class="price-range">{site.ukStartingRange}</div>
+        <p>
+          <strong>
+            Small-business websites typically start from {site.ukStartingRange}, depending on scope.
+          </strong>
+        </p>
+        <p>
+          The final quote depends on the number of pages, content provided, and any optional
+          features.
+        </p>
+        <div class="price-other">
+          <p>
+            You will receive a clear quote before work starts. No hidden additions without
+            agreement.
+          </p>
+        </div>
+      </div>
+      <div class="pricing-scope">
+        <h3>Included in a typical project</h3>
+        <ul>
+          {projectInclusions.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <div class="pricing-exclusions">
+          <h3>Not included unless agreed</h3>
+          <p>
+            Logo design, copywriting beyond agreed pages, photography, hosting, domain, ongoing
+            maintenance, chatbot setup and recurring platform costs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="process">
+    <div class="wrap">
+      <div class="section-index">05 / Process</div>
+      <div class="section-heading process-heading">
+        <h2>
+          From your first enquiry
+          <br />
+          to your finished website.
+        </h2>
+        <p>
+          You work directly with me. Price, scope, revisions and the next step are clear before work
+          begins.
+        </p>
+      </div>
+      <ol class="process-flow">
+        {processSteps.map((step, index) => (
+          <li>
+            <span class="process-step-number">0{index + 1}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.copy}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <div class="process-facts">
+        <p>
+          <strong>4–7 days</strong> after payment, content and required access; scope dependent.
+        </p>
+        <p>
+          <strong>Two revision rounds.</strong> Optional ongoing support is agreed separately.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="section paper" id="about">
+    <div class="wrap about-grid">
+      <div class="founder-image">
+        <img
+          src={path('images/zakir-ali.webp')}
+          alt="Zakir Ali, founder of ZAKIR DIGITAL"
+          width="700"
+          height="700"
+          loading="lazy"
+        />
+        <img
+          class="founder-logo"
+          src={path('images/supplied-logo.webp')}
+          width="100"
+          height="100"
+          alt="Supplied ZAKIR DIGITAL brand logo"
+          loading="lazy"
+          style="position:absolute;top:16px;left:18px;width:88px;height:88px;object-fit:contain;padding:0;z-index:1"
+        />
+        <div class="founder-caption">
+          Zakir Ali<span>Founder · ZAKIR DIGITAL</span>
+        </div>
+      </div>
+      <div class="about-copy">
+        <div class="eyebrow">06 / About</div>
+        <h2>About Zakir Ali</h2>
+        <p>
+          I’m Zakir Ali, founder of ZAKIR DIGITAL, based in Pakistan and working remotely with UK
+          local businesses.
+        </p>
+        <p>
+          I focus on clear, professional websites that make services easy to understand and contact
+          details easy to find on any device.
+        </p>
+        <p>
+          I keep the process simple: clear pricing, a short outline before work begins, regular
+          updates while your website is being built, and no exaggerated promises.
+        </p>
+        <div class="about-location">
+          Based in Pakistan.
+          <br />
+          Working remotely with UK businesses.
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section investment" id="faq">
+    <div class="wrap faq-grid">
+      <div>
+        <div class="section-index">07 / FAQ</div>
+        <h2>
+          A few things
+          <br />
+          you might be wondering.
+        </h2>
+      </div>
+      <div class="faq">
+        {faqs.map(([question, answer]) => (
+          <details>
+            <summary>{question}</summary>
+            <p>{answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <div class="section-index">08 / Contact</div>
+        <h2>Tell me about your business</h2>
+        <p>
+          Share your business name, what you do, where you are based, and a link to your current
+          website if you have one. I’ll reply with a short outline of what I would improve and the
+          next step.
+        </p>
+        <div class="contact-links">
+          <small>Prefer email? Write to</small>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer">
+            Talk on WhatsApp
+          </a>
+          <small>{site.whatsappDisplay}</small>
+        </div>
+        <p class="availability-note">
+          Based in Pakistan, serving UK clients remotely.
+          <br />
+          Email and WhatsApp. Video meetings when needed.
+        </p>
+      </div>
+      <BriefComposer />
+    </div>
+  </section>
+</Layout>
