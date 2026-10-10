@@ -1,4 +1,25 @@
-# Verification record — 9 October 2026
+# Verification record
+
+## Public GitHub Pages publication — 10 October 2026
+
+Public source repository: https://github.com/Zakirali765/zakir-digital-portfolio
+
+Live website: https://zakirali765.github.io/zakir-digital-portfolio/
+
+The owner requested public source and a live site, superseding the earlier local-only/private instructions. GitHub confirmed that the repository is public, the default branch is `main`, and GitHub Pages serves the root of `gh-pages`. Its build finished with status `built`, no reported error, and deployment commit `4d010a145b4212477705007aa7647402aff13604`. No existing reference repository was changed.
+
+The GitHub Pages build uses the real origin and `/zakir-digital-portfolio/` base. Source commits use the owner's GitHub noreply email. Generated files, dependencies, private env files, test output and working files remain excluded from `main`. The site privacy page now identifies GitHub Pages hosting and its security-related IP logging.
+
+- Astro check: 38 files, zero errors, warnings or hints. Lint and the nine-page production build passed.
+- Local and live publication checks each passed all eight normal routes, 95 internal links and 18 decoded images, including the case studies and fictional demonstrations.
+- Live canonical URL, index/follow homepage metadata, robots exclusions for demos and sitemap URLs passed. Fictional demonstrations remain noindex and absent from the sitemap.
+- Live homepage has no horizontal overflow at 360, 390, 768, 1024 and 1440 pixels. Mobile menu opening and Escape closing passed. Custom 404 returned HTTP 404 with the portfolio's content. The published hosting/privacy wording passed.
+- No JavaScript runtime errors or unresolved resource failures were found. Chrome cancelled two superseded responsive image requests with `net::ERR_ABORTED` while the viewport changed; the selected images decoded and the separate route/image audit passed.
+- Desktop and mobile screenshots were saved from the live site. The live site was opened and visually checked in the in-app browser.
+
+The existing enquiry composer still opens editable email/WhatsApp drafts; publishing does not add a submission backend. GitHub Pages updates use `npm run deploy:pages`; pushing source to `main` alone does not publish a new compiled build. Publication checks did not send any enquiries. Previous Lighthouse results below describe the local UK revision, not a new live performance measurement.
+
+## Local verification — 9 October 2026
 
 Project: `C:\Users\Admin\Desktop\zakir-digital-portfolio`. Tests used the served production build at `http://127.0.0.1:4321/`, not only the development server. No publication was performed.
 
